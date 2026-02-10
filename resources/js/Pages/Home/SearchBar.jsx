@@ -13,7 +13,7 @@ export default function SearchBar(){
             <div className='flex w-1/2 items-center p-3 pl-0 justify-between'>
                 <img src={locationIcon} className='w-1/10'/>
                 <input placeholder='Pilsēta vai indekss' className='placeholder:text-[#E9D5FF] w-5/10 h-full text-[#E9D5FF] focus:outline-none'/>
-                <button className='w-3/10 bg-[#EC4899] h-full rounded-lg text-white font-semibold cursor-pointer'>Meklēt</button>
+                <button className='w-3/10 bg-[#EC4899] h-full rounded-lg text-white font-semibold cursor-pointer hover:bg-[#F472B6]'>Meklēt</button>
             </div>
         </div>
     )
