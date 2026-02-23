@@ -18,3 +18,9 @@
     --vibrant-pink: #EC4899;
     --lavender-light: #E9D5FF;
 }
+
+@layer utilities {
+  .clip-slant {
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+  }
+}
