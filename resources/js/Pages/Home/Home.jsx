@@ -6,6 +6,7 @@ import communityIcon from '../../../assets/community.png'
 import starsIcon from '../../../assets/stars.png'
 import EventCard from "../../components/EventCard";
 import festivalImage from '../../../assets/festival.png'
+import Footer from "../../components/Footer";
 
 export default function Home(){
     return(
@@ -41,7 +42,6 @@ export default function Home(){
             
             <section className="w-full bg-[#4C1D95] flex flex-col">
 
-            {/* Top Wave */}
             <div className="w-full h-24">
                 <svg
                 viewBox="0 0 1000 100"
@@ -69,6 +69,7 @@ export default function Home(){
                 sm:grid-cols-2 
                 lg:grid-cols-4 
                 gap-8
+                place-items-center
                 ">
                     <EventCard category="Music" image={festivalImage} date="PIEKT, 14 JUN" time="20:00" title="Mūzikas Festivāls" location="Mežaparks"/> 
                     <EventCard category="Music" image={festivalImage} date="PIEKT, 14 JUN" time="20:00" title="Mūzikas Festivāls" location="Mežaparks"/> <EventCard category="Music" image={festivalImage} date="PIEKT, 14 JUN" time="20:00" title="Mūzikas Festivāls" location="Mežaparks"/> 
@@ -77,7 +78,19 @@ export default function Home(){
 
             </div>
             </section>
-            
+            <section className="w-full bg-[#1E0B44] flex justify-center items-center py-16">
+                <div className=" w-[80%] text-center flex flex-col bg-[#4C1D95] gap-10 rounded-2xl px-5 py-15 lg:py-25 lg:w-[70%]">
+                    <div className="flex flex-col gap-5">
+                        <span className="text-[clamp(1.875rem,5vw,2.75rem)] text-white font-bold">Gatavs sākt?</span>
+                        <span className="text-[#E9D5FF]">Neatkarīgi no tā, vai vēlies rīkot savu pasākumu vai atklāt slēptos dārgumus, Hango ir tavs ceļš uz īstām saiknēm.</span>
+                    </div>
+                    <div className="flex flex-col w-full gap-3 justify-center items-center md:flex-row">
+                        <button className="w-full text-white bg-[#EC4899] rounded-2xl py-3 font-semibold max-w-60">Izveidot pasākumu</button>
+                        <button className="bg-[#2E1065] w-full text-white font-semibold py-3 rounded-2xl max-w-60">Uzzināt vairāk</button>
+                    </div>
+                </div>
+            </section>
+            <Footer/>
         </div>
     )
 }
