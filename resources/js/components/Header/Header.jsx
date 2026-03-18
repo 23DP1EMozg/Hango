@@ -11,7 +11,7 @@ export default function Header() {
       <div className="flex items-center justify-between h-20 px-4 md:px-10">
         
         <div className="flex items-center">
-          <img src={logo} className="h-12 md:h-30" />
+          <img src={logo} className="h-5 md:h-8" />
         </div>
 
         <div className="hidden md:flex gap-10 items-center">
