@@ -1,9 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import logo from '../../../assets/logo.png'
+import { useAuth } from '../../providers/AuthProvider';
 
-export default function Header() {
-  const [auth, setAuth] = useState(false)
+export default function Header(props) {
+  const { user, loading } = useAuth();
   const [open, setOpen] = useState(false)
+
 
   return (
     <header className="w-full bg-[#1E0B44] text-white">
@@ -22,7 +24,7 @@ export default function Header() {
             Veidot pasākumu
           </span>
 
-          {!auth && (
+          {!user && (
             <>
               <button className="hover:text-[#EC4899] transition duration-300">
                 Pieslēgties
@@ -51,7 +53,7 @@ export default function Header() {
             Veidot pasākumu
           </span>
 
-          {!auth && (
+          {!user && (
             <>
               <button>Pieslēgties</button>
               <button className="bg-[#EC4899] p-2 rounded-xl">

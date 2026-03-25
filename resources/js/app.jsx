@@ -1,6 +1,8 @@
 import './bootstrap';
 import { createInertiaApp } from '@inertiajs/react'
+import { createContext } from 'react';
 import { createRoot } from 'react-dom/client'
+import { AuthProvider } from './providers/AuthProvider';
 
 createInertiaApp({
     resolve: name => {
@@ -8,6 +10,10 @@ createInertiaApp({
         return pages[`./Pages/${name}/${name}.jsx`]
     },
     setup({ el, App, props }) {
-        createRoot(el).render(<App {...props} />)
+        createRoot(el).render(
+            <AuthProvider>
+                {<App {...props} />}
+            </AuthProvider>
+        )
     },
 })

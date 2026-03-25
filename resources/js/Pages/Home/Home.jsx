@@ -7,8 +7,13 @@ import starsIcon from '../../../assets/stars.png'
 import EventCard from "../../components/EventCard";
 import festivalImage from '../../../assets/festival.png'
 import Footer from "../../components/Footer";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useAuth } from "../../providers/AuthProvider";
 
 export default function Home(){
+
+
     return(
         <div>
             <Header/>
