@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import logo from '../../../assets/logo.png'
 import { useAuth } from '../../providers/AuthProvider';
+import { Link } from '@inertiajs/react';
 
 export default function Header(props) {
-  const { user, loading } = useAuth();
+  const { user } = useAuth();
   const [open, setOpen] = useState(false)
 
 
@@ -24,7 +25,7 @@ export default function Header(props) {
             Veidot pasākumu
           </span>
 
-          {!user && (
+          {!user ? (
             <>
               <button className="hover:text-[#EC4899] transition duration-300">
                 Pieslēgties
@@ -33,6 +34,12 @@ export default function Header(props) {
                 Pievienoties
               </button>
             </>
+          ) : (
+              <Link href='/profile'>
+                <button className="bg-[#EC4899] px-4 py-2 rounded-xl hover:scale-110 transition duration-300">
+                  {user.name}
+                </button>
+              </Link>
           )}
         </div>
 

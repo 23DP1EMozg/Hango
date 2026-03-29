@@ -7,8 +7,11 @@ import password from '../../../assets/password.png'
 
 import { useForm } from '@inertiajs/react'
 import { ToastContainer, toast } from 'react-toastify'
+import { useAuth } from '../../providers/AuthProvider'
 
 export default function Login(){
+
+    const {user, setUser} = useAuth()
 
     const {data, setData, post, errors, processing} = useForm({
         email: "",
@@ -22,6 +25,12 @@ export default function Login(){
             onError: (err) => {
                 const message = err.email || err.password || "Login failed";
                 toast.error(message);
+                setData('email', "")
+                setData('password', "")
+            },
+
+            onSuccess: () => {
+                setUser()
             }
         })
     }
