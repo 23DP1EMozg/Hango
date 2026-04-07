@@ -37,7 +37,7 @@ export default function Header(props) {
           ) : (
               <Link href='/profile'>
                 <button className="bg-[#EC4899] px-4 py-2 rounded-xl hover:scale-110 transition duration-300">
-                  {user.name}
+                  {user?.username}
                 </button>
               </Link>
           )}
@@ -60,13 +60,19 @@ export default function Header(props) {
             Veidot pasākumu
           </span>
 
-          {!user && (
+          {!user ? (
             <>
               <button>Pieslēgties</button>
               <button className="bg-[#EC4899] p-2 rounded-xl">
                 Pievienoties
               </button>
             </>
+          ) : (
+              <Link href='/profile'>
+                <button className="bg-[#EC4899] px-4 py-2 rounded-xl hover:scale-110 transition duration-300">
+                  {user.username}
+                </button>
+              </Link>
           )}
         </div>
       )}

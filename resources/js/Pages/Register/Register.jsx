@@ -11,7 +11,7 @@ export default function Register(){
 
 
     const { data, setData, post, processing, errors } = useForm({
-        name: '',
+        username: '',
         email: '',
         password: '',
         password_confirmation: '',
@@ -23,7 +23,7 @@ export default function Register(){
         e.preventDefault()
         post('/register', {
             onError: (err) => {
-                toast.error(err.name ? err.name : err.email ? err.email : err.password ? err.password : null)
+                toast.error(err.name ? err.username : err.email ? err.email : err.password ? err.password : null)
             }
         })
 
@@ -45,7 +45,7 @@ export default function Register(){
                     <div className='w-[15%] h-full flex justify-center items-center'>
                         <img src={person} className='w-[80%] max-w-6'/>
                     </div>
-                    <input value={data.name} onChange={(e) => setData('name', e.target.value)} className='w-[85%] h-full rounded-r-xl placeholder:text-gray-500 text-white' name='name' placeholder='Ievadi savu vārdu'/>
+                    <input value={data.username} onChange={(e) => setData('username', e.target.value)} className='w-[85%] h-full rounded-r-xl placeholder:text-gray-500 text-white' name='username' placeholder='Ievadi savu vārdu'/>
                 </div>
                 </div>
                 <div className='flex flex-col gap-1'>

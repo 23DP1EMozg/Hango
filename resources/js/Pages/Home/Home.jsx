@@ -77,7 +77,8 @@ export default function Home(){
                 place-items-center
                 ">
                     <EventCard category="Music" image={festivalImage} date="PIEKT, 14 JUN" time="20:00" title="Mūzikas Festivāls" location="Mežaparks"/> 
-                    <EventCard category="Music" image={festivalImage} date="PIEKT, 14 JUN" time="20:00" title="Mūzikas Festivāls" location="Mežaparks"/> <EventCard category="Music" image={festivalImage} date="PIEKT, 14 JUN" time="20:00" title="Mūzikas Festivāls" location="Mežaparks"/> 
+                    <EventCard category="Music" image={festivalImage} date="PIEKT, 14 JUN" time="20:00" title="Mūzikas Festivāls" location="Mežaparks"/> 
+                    <EventCard category="Music" image={festivalImage} date="PIEKT, 14 JUN" time="20:00" title="Mūzikas Festivāls" location="Mežaparks"/> 
                     <EventCard category="Music" image={festivalImage} date="PIEKT, 14 JUN" time="20:00" title="Mūzikas Festivāls" location="Mežaparks"/>
                 </div>
 

@@ -1,5 +1,3 @@
-
-
 import logo from '../../../assets/logo.png'
 import person from '../../../assets/person.png'
 import email from '../../../assets/email.png'
@@ -18,7 +16,6 @@ export default function Login(){
         password: ""
     })
 
-
     const submit = (e) => {
         e.preventDefault()
         post('/login', {
@@ -34,7 +31,6 @@ export default function Login(){
             }
         })
     }
-
 
     return(
         <div className='w-full h-screen bg-[#1E0B44] flex flex-col items-center justify-center py-10 gap-10'>
