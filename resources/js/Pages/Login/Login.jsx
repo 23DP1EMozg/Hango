@@ -2,7 +2,6 @@ import logo from '../../../assets/logo.png'
 import person from '../../../assets/person.png'
 import email from '../../../assets/email.png'
 import password from '../../../assets/password.png'
-
 import { useForm } from '@inertiajs/react'
 import { ToastContainer, toast } from 'react-toastify'
 import { useAuth } from '../../providers/AuthProvider'

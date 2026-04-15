@@ -19,6 +19,10 @@ Route::get('/profile', function() {
     return Inertia::render('Profile');
 })->middleware('auth');
 
+Route::get('/create-event', function() {
+    return Inertia::render("CreateEvent");
+})->middleware('auth');
+
 // Auth
 Route::get('/register', function(){
     return Inertia::render("Register");
