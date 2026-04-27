@@ -3,7 +3,7 @@ export default function EventCard(props){
     return(
         <div className="w-70 h-100 bg-white rounded-2xl transition-all duration-600 ease-in-out group overflow-hidden hover:shadow-[0_10px_40px_rgba(147,51,234,0.4),0_0_60px_rgba(168,85,247,0.3)]">
             <div className="w-full h-1/2 rounded-t-2xl p-5 bg-center bg-cover transition-transform duration-600 ease-in-out group-hover:scale-110" style={{backgroundImage: `URL(${props.image})`}}>
-                <div className="w-15 h-7 bg-[#3C214D] rounded-lg flex justify-center place-items-center text-[#F472B6] font-semibold text-sm">
+                <div className="px-3 w-fit h-7 bg-[#3C214D] rounded-lg flex justify-center place-items-center text-[#F472B6] font-semibold text-sm">
                     <span>{props.category}</span>
                 </div>
             </div>

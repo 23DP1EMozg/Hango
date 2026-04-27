@@ -10,10 +10,15 @@ import EventCard from "../../components/EventCard"
 import festivalImage from '../../../assets/festival.png'
 import Footer from "../../components/Footer"
 
-export default function Profile() {
+const Events = {
+    created: "created",
+    joined: "joined"
+}
+
+export default function Profile({ events }) {
 
     const { user } = useAuth()
-    const [eventOption, setEventOption] = useState("created")
+    const [eventOption, setEventOption] = useState(Events.created)
 
     useEffect(() => {
         console.log(user?.id)
@@ -22,7 +27,7 @@ export default function Profile() {
     return(
         <div>
             <Header/>
-            <section className="w-full flex flex-col items-center py-10 bg-gradient-to-b from-[#4C1D95] to-[#1E0B44]">
+            <section className="w-full min-h-screen flex flex-col items-center py-10 bg-gradient-to-b from-[#4C1D95] to-[#1E0B44]">
                 <div className="w-full flex flex-col md:flex-row lg:gap-10">
                     <div className="w-full flex flex-col items-center gap-10 lg:w-[30%] lg:items-end">
                         <img src={profile_picture} className=" h-45 rounded-full border-4 border-[#EC4899] shadow-[0_0_20px_#EC4899] p-2 "/>
@@ -49,18 +54,27 @@ export default function Profile() {
                     <InfoCard count={24} title="Pievienotas"/>                                   
                 </div>
                 <div className="flex w-full px-1">
-                    <div className={`border-b-3 border-solid border-[${eventOption === "created" ? "#EC4899" : "#2E1065"}] pt-5 w-[50%] text-center text-sm py-3 font-semibold cursor-pointer`} onClick={() => setEventOption("created")}>
-                        <span className={`text-${eventOption === "created" ? "[#EC4899]" : "white"}`}>Taisītie pasākumi</span>
+                    <div className={`border-b-3 border-solid border-[${eventOption === Events.created ? "#EC4899" : "#2E1065"}] pt-5 w-[50%] text-center text-sm py-3 font-semibold cursor-pointer`} onClick={() => setEventOption("created")}>
+                        <span className={`text-${eventOption === Events.created ? "[#EC4899]" : "white"}`}>Taisītie pasākumi</span>
                     </div>
-                    <div className={`border-b-3 border-solid border-[${eventOption === "joined" ? "#EC4899" : "#2E1065"}] pt-5 w-[50%] text-center text-sm py-3 font-semibold cursor-pointer`} onClick={() => setEventOption('joined')}>
-                        <span className={`text-${eventOption === "joined" ? "[#EC4899]" : "white"}`}>Pievienotie pasākumi</span>
+                    <div className={`border-b-3 border-solid border-[${eventOption === Events.joined ? "#EC4899" : "#2E1065"}] pt-5 w-[50%] text-center text-sm py-3 font-semibold cursor-pointer`} onClick={() => setEventOption('joined')}>
+                        <span className={`text-${eventOption === Events.joined ? "[#EC4899]" : "white"}`}>Pievienotie pasākumi</span>
                     </div>
                 </div>
                 <div className="grid grid-cols-1 gap-5 pt-5 md:grid-cols-2 lg:grid-cols-3">
-                    <EventCard category="Music" image={festivalImage} date="PIEKT, 14 JUN" time="20:00" title="Mūzikas Festivāls" location="Mežaparks"/> 
-                    <EventCard category="Music" image={festivalImage} date="PIEKT, 14 JUN" time="20:00" title="Mūzikas Festivāls" location="Mežaparks"/> 
-                    <EventCard category="Music" image={festivalImage} date="PIEKT, 14 JUN" time="20:00" title="Mūzikas Festivāls" location="Mežaparks"/> 
-                    <EventCard category="Music" image={festivalImage} date="PIEKT, 14 JUN" time="20:00" title="Mūzikas Festivāls" location="Mežaparks"/>
+                    {eventOption === Events.created ? (
+                        events.map((event, i) => (
+                        <EventCard
+                            category={event.type}
+                            image={festivalImage}
+                            date={event.date}
+                            time={event.time}
+                            title={event.title}
+                            location={event.city}
+                            key={i}
+                        />
+                    ))
+                    ) : null}
                 </div>
             </section>
             <Footer/>
