@@ -26,6 +26,15 @@ class UserController extends Controller {
         request()->session()->regenerateToken();
         return redirect("/login");
     }
-    
+   
+    public function makeAdmin($id) {
+        $user = User::findOrFail($id);
+
+        if ($user->admin == false) {
+            $user->admin = true;
+            $user->save();
+        }
+        return redirect()->back()->with('success', 'updated!');
+    }
 
 }

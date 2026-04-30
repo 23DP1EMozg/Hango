@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserController;
 use App\Models\Event;
@@ -27,11 +28,15 @@ Route::get('/create-event', function() {
     return Inertia::render("CreateEvent");
 })->middleware('auth');
 
-Route::get('browse-events', function() {
+Route::get('/browse-events', function() {
     return Inertia::render("BrowseEvents", [
         'events' => Event::all()
     ]);
 })->middleware('auth');
+
+Route::get('/admin', function() {
+    return Inertia::render("Admin");
+})->middleware('admin');
 
 // Auth
 Route::get('/register', function(){
@@ -58,4 +63,10 @@ Route::post('/event', [EventController::class, 'createEvent'])
 
 Route::get('/event', [EventController::class, "getAllEvents"])
     ->middleware('auth');
+
+// Category
+Route::post('/category', [CategoryController::class, 'createCategory']);
+
+Route::get('/category', [CategoryController::class, 'getAllCategories']);
+
 
