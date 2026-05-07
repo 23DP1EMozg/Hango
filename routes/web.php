@@ -20,7 +20,9 @@ Route::get('/about', function () {
 
 Route::get('/profile', function() {
     return Inertia::render('Profile', [
-        "events" => Event::where("owner_id", Auth::id())->get()
+        "events" => Event::where("owner_id", Auth::id())
+        ->with('category')
+        ->get()
     ]);
 })->middleware('auth');
 
@@ -46,7 +48,7 @@ Route::post('/register', [AuthController::class, 'Register']);
 
 Route::get('/login', function(){
     return Inertia::render("Login");
-});
+})->name('login');
 
 Route::post('/login', [AuthController::class, 'login']);
 
@@ -67,6 +69,7 @@ Route::get('/event', [EventController::class, "getAllEvents"])
 // Category
 Route::post('/category', [CategoryController::class, 'createCategory']);
 
-Route::get('/category', [CategoryController::class, 'getAllCategories']);
+Route::get('/category', [CategoryController::class, 'getAllCategories'])
+    ->middleware('auth');
 
 

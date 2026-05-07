@@ -1,5 +1,6 @@
 import { useForm } from "@inertiajs/react";
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const GlobalStyles = () => (
   <style dangerouslySetInnerHTML={{ __html: `
@@ -22,6 +23,8 @@ const VIBES = [
   { key: "other", label: "CITS", icon: ( <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5"><circle cx="5" cy="12" r="1" /><circle cx="12" cy="12" r="1" /><circle cx="19" cy="12" r="1" /></svg> ) },
 ];
 
+
+
 const inputBase =
   "w-full bg-[#1e1050] text-[#e2d9f3] placeholder-[#6b5a9e] rounded-full px-5 py-3.5 text-sm outline-none focus:ring-2 focus:ring-fuchsia-500 transition";
 
@@ -36,13 +39,26 @@ export default function EventForm() {
     capacity: '',
     age_group: 'all', 
     privacy: 'public', 
-    type: 'party', // Synchronized with initial vibe state
+    category_id: 'party', // Synchronized with initial vibe state
   });
+
+  const [categories, setCategories] = useState([{}])
+
+  useEffect(() => {
+      const getCategories = async () => {
+          const res = await axios.get('/category', {withCredentials: true})
+          setCategories(res.data)
+          console.log(res.data)
+      }
+      getCategories()
+  }, [])
 
   // Handle Form Submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    post('/event');
+    post('/event', {
+      onError: err => console.log(err)
+    });
     console.log(data)
   };
 
@@ -176,23 +192,26 @@ export default function EventForm() {
       <div className="mb-8">
         <label className="block text-[10px] font-semibold tracking-widest text-purple-300 mb-3">IZVĒLIES NOSKAŅU</label>
         <div className="flex flex-wrap gap-3">
-          {VIBES.map(({ key, label, icon }) => (
+          {categories.map(({ id, title }) => (
             <button
-              key={key}
+              key={id}
               type="button"
-              onClick={() => setData('type', key)}
+              onClick={() => setData('category_id', id)}
               className="flex flex-col items-center gap-1.5 group cursor-pointer"
             >
-              <div className={`w-16 h-16 rounded-full flex items-center justify-center transition border-2 ${
-                data.type === key ? "bg-purple-700 border-pink-400 text-pink-400" : "bg-[#1e1050] border-transparent text-purple-400"
-              }`}>
-                {icon}
-              </div>
-              <span className={`text-[10px] font-semibold tracking-widest ${data.type === key ? "text-white" : "text-purple-400"}`}>
-                {label}
+                <div className={`w-16 h-16 rounded-full flex items-center justify-center transition border-2 text-center p-1 ${
+                  data.category_id === id ? "bg-purple-700 border-pink-400 text-pink-400" : "bg-[#1e1050] border-transparent text-purple-400"
+                }`}>
+                  <span className="text-[10px] sm:text-xs leading-none break-words overflow-hidden">
+                    {title}
+                  </span>
+                </div>
+              <span className={`text-[10px] font-semibold tracking-widest ${data.category_id === id ? "text-white" : "text-purple-400"}`}>
+                {title}
               </span>
             </button>
           ))}
+          
         </div>
       </div>
 

@@ -16,7 +16,12 @@ class Event extends Model
         'capacity',
         'age_group',
         'privacy',
-        'type',
+        'category_id',
         'owner_id'
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

@@ -19,7 +19,7 @@ class EventController extends Controller {
             'capacity'    => 'required|integer',
             'age_group'   => 'required|string',
             'privacy'     => 'required|string',
-            'type'        => 'required|string',
+            'category_id' => 'required|integer|exists:categories,id',
         ]);
 
         $validated['owner_id'] = Auth::id();

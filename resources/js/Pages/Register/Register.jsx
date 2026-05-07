@@ -3,7 +3,7 @@ import person from '../../../assets/person.png'
 import email from '../../../assets/email.png'
 import password from '../../../assets/password.png'
 
-import { useForm } from '@inertiajs/react'
+import { Link, useForm } from '@inertiajs/react'
 import { ToastContainer, toast } from 'react-toastify';
 
 export default function Register(){
@@ -78,7 +78,7 @@ export default function Register(){
                 <button type='submit' disabled={processing} className='w-full text-white h-15 rounded-2xl text-xl cursor-pointer bg-[#EC4899]'>Izveidot kontu</button>
             </form>
 
-            <span className='text-white'>Vai jums jau ir konts? <a className='text-[#EC4899]'>Pieslēdzies</a></span>
+            <Link href='/login' className='text-white'>Vai jums jau ir konts? <a className='text-[#EC4899]'>Pieslēdzies</a></Link>
         </div>
     )
 }

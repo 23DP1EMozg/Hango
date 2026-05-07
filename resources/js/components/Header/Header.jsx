@@ -21,18 +21,22 @@ export default function Header(props) {
           <span className="cursor-pointer text-[#E9D5FF] font-semibold hover:text-[#EC4899] transition duration-300">
             Skatīt pasākumus
           </span>
-          <span className="cursor-pointer text-[#E9D5FF] font-semibold hover:text-[#EC4899] transition duration-300">
+          <Link href='/create-event' className="cursor-pointer text-[#E9D5FF] font-semibold hover:text-[#EC4899] transition duration-300">
             Veidot pasākumu
-          </span>
+          </Link>
 
           {!user ? (
             <>
+            <Link href="/login">
               <button className="hover:text-[#EC4899] transition duration-300">
                 Pieslēgties
               </button>
+            </Link>
+            <Link href='/register'>
               <button className="bg-[#EC4899] px-4 py-2 rounded-xl hover:scale-110 transition duration-300">
                 Pievienoties
               </button>
+            </Link>
             </>
           ) : (
               <Link href='/profile'>

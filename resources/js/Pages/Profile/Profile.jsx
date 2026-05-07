@@ -65,7 +65,7 @@ export default function Profile({ events }) {
                     {eventOption === Events.created ? (
                         events.map((event, i) => (
                         <EventCard
-                            category={event.type}
+                            category={event.category.title}
                             image={festivalImage}
                             date={event.date}
                             time={event.time}

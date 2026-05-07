@@ -2,7 +2,7 @@ import logo from '../../../assets/logo.png'
 import person from '../../../assets/person.png'
 import email from '../../../assets/email.png'
 import password from '../../../assets/password.png'
-import { useForm } from '@inertiajs/react'
+import { Link, useForm } from '@inertiajs/react'
 import { ToastContainer, toast } from 'react-toastify'
 import { useAuth } from '../../providers/AuthProvider'
 
@@ -63,7 +63,7 @@ export default function Login(){
                 <button type='submit' className='w-full text-white h-15 rounded-2xl text-xl cursor-pointer bg-[#EC4899]'>Pieslēdzies</button>
             </form>
 
-            <span className='text-white'>Nav konta? <a className='text-[#EC4899]'>Reģistrējies</a></span>
+            <Link href='/register' className='text-white'>Nav konta? <a className='text-[#EC4899]'>Reģistrējies</a></Link>
         </div>
     )
 }
